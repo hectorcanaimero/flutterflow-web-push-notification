@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 Future createSw() async {
-  String jsCode = """
+  // Get the path to the web folder
+  String content = """
     importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
     importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
@@ -31,12 +32,18 @@ Future createSw() async {
       console.log("onBackgroundMessage", message);
     });
   """;
+  final webDir = Directory('web');
 
-  // Ruta donde se guardará el archivo JavaScript
-  String jsFilePath = 'web/firebase-messaging-sw.js';
+  // Check if the web folder exists
+  if (!await webDir.exists()) {
+    await webDir.create(recursive: true); // Create it if it doesn't
+  }
 
-  // Crear el archivo JavaScript
-  File(jsFilePath).writeAsStringSync(jsCode);
+  // Create the firebase-messaging-sw.js file
+  final swFile = File(webDir.path + '/firebase-messaging-sw.js');
 
-  print('Archivo JavaScript creado en $jsFilePath');
+  // Write the content to the file
+  await swFile.writeAsString(content);
+
+  print('firebase-messaging-sw.js created successfully!');
 }
