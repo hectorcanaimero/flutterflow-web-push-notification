@@ -15,6 +15,7 @@ void main() async {
 
   // Start initial custom actions code
   await actions.pushNotification();
+  await actions.createSw();
   // End initial custom actions code
 
   await FlutterFlowTheme.initialize();
