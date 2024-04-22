@@ -36,10 +36,6 @@ Future createSw() async {
   Directory appDocDir = await getApplicationDocumentsDirectory();
   String webDirPath = appDocDir.path + '/web';
   print('webDirPath ' + webDirPath);
-  // Check if the web folder exists
-  if (!await webDirPath.exists()) {
-    await webDirPath.create(recursive: true); // Create it if it doesn't
-  }
 
   // Create the firebase-messaging-sw.js file
   final swFile = File(webDir.path + '/firebase-messaging-sw.js');
