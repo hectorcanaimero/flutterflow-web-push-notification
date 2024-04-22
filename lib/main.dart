@@ -14,7 +14,6 @@ void main() async {
   usePathUrlStrategy();
 
   // Start initial custom actions code
-  await actions.createSw();
   await actions.pushNotification();
   // End initial custom actions code
 

@@ -6,12 +6,24 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 Future createSw() async {
   // Get the path to the web folder
-  String content = """
+  Directory webDirectory = await getApplicationDocumentsDirectory();
+  String webPath = webDirectory.path;
+
+  // Verificar si el archivo ya existe en la carpeta web
+  String filePath = '$webPath/firebase-messaging-sw.js';
+  if (await File(filePath).exists()) {
+    print('El archivo ya existe en la carpeta web.');
+    return;
+  }
+  try {
+    // Leer el contenido del archivo desde los recursos (assets)
+    String content = """
     importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
     importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
@@ -33,15 +45,12 @@ Future createSw() async {
       console.log("onBackgroundMessage", message);
     });
   """;
-  Directory appDocDir = await getApplicationDocumentsDirectory();
-  String webDirPath = appDocDir.path + '/web';
-  print('webDirPath ' + webDirPath);
-  Directory webDir = Directory(webDirPath);
-  // Create the firebase-messaging-sw.js file
-  final swFile = File(webDir.path + '/firebase-messaging-sw.js');
 
-  // Write the content to the file
-  await swFile.writeAsString(content);
-
+    // Escribir el archivo en la carpeta web
+    await File(filePath).writeAsString(content);
+    print('Archivo copiado a la carpeta web.');
+  } catch (e) {
+    print('Error al copiar el archivo: $e');
+  }
   print('firebase-messaging-sw.js created successfully!');
 }
