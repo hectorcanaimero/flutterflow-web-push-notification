@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 Future createSw() async {
   // Get the path to the web folder
@@ -32,11 +33,12 @@ Future createSw() async {
       console.log("onBackgroundMessage", message);
     });
   """;
-  final webDir = Directory('web');
-
+  Directory appDocDir = await getApplicationDocumentsDirectory();
+  String webDirPath = appDocDir.path + '/web';
+  print('webDirPath ' + webDirPath);
   // Check if the web folder exists
-  if (!await webDir.exists()) {
-    await webDir.create(recursive: true); // Create it if it doesn't
+  if (!await webDirPath.exists()) {
+    await webDirPath.create(recursive: true); // Create it if it doesn't
   }
 
   // Create the firebase-messaging-sw.js file

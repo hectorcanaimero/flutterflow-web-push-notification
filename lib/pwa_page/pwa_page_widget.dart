@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'pwa_page_model.dart';
 export 'pwa_page_model.dart';
 
@@ -50,8 +53,8 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CachedNetworkImage(
-                      fadeInDuration: const Duration(milliseconds: 500),
-                      fadeOutDuration: const Duration(milliseconds: 500),
+                      fadeInDuration: Duration(milliseconds: 500),
+                      fadeOutDuration: Duration(milliseconds: 500),
                       imageUrl:
                           'https://images.unsplash.com/photo-1624008915317-cb3ad69b16ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FyZWhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
                       width: MediaQuery.sizeOf(context).width * 1.0,
@@ -60,7 +63,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 0.0, 0.0),
                       child: Text(
                         'Facility Name',
                         style: FlutterFlowTheme.of(context)
@@ -73,7 +76,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 0.0, 0.0),
                       child: Text(
                         'Warehouse',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -87,7 +90,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 4.0),
                       child: Text(
                         'The best of all 3 worlds, Row & Flow offers high intensity rowing and strength intervals followed by athletic based yoga sure to enhance flexible and clear the mind.',
                         style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -105,7 +108,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 12.0),
                       child: Text(
                         'Past Inspections',
                         style:
@@ -121,14 +124,14 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 8.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x2F1D2429),
@@ -141,7 +144,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -198,7 +201,7 @@ class _PwaPageWidgetState extends State<PwaPageWidget> {
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       'This was a nice and clean facility.',
