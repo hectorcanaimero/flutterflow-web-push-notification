@@ -8,8 +8,18 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:firebase_core/firebase_core.dart';
 
 Future pushNotification() async {
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+        apiKey: "AIzaSyDFhk6-PfrZ1H6xOz-JSCrvf_4lRjaxTJM",
+        authDomain: "mario-test-oy5suz.firebaseapp.com",
+        projectId: "mario-test-oy5suz",
+        storageBucket: "mario-test-oy5suz.appspot.com",
+        messagingSenderId: "439067069464",
+        appId: "1:439067069464:web:cfe178e5d7d4732731876d"),
+  );
   // Add your function code here!
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   NotificationSettings settings = await _firebaseMessaging.requestPermission(
@@ -34,6 +44,6 @@ Future pushNotification() async {
       message.notification?.body ?? 'Cuerpo de la notificación',
     );
   });
-  String deviceToken = FirebaseMessaging.instance.getToken();
+  String? deviceToken = await FirebaseMessaging.instance.getToken();
   print('TOKEN ${deviceToken}');
 }
